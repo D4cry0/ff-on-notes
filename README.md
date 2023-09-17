@@ -1,38 +1,9 @@
-# Welcome to Remix!
+# FF ON NOTES
 
-- [Remix Docs](https://remix.run/docs)
+A text storage cloud based app. App to save notes and some data that you need keep temporary in your daily.
 
-## Development
+Roadmap to October 2023
 
-From your terminal:
-
-```sh
-npm run dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+- Add Prisma DB v0.0.2
+- Add Auth v0.0.3
+- Add 2FA v0.0.4
