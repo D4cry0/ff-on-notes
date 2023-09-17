@@ -1,8 +1,13 @@
 {
-  "name": "remix-course",
+  "name": "ff-on-notes",
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "Arnulfo Cornejo",
+    "email": "supervisor@againstfomo.com"},
+  "license": "LGPL-3.0-or-later",
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual",
