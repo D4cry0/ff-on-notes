@@ -1,12 +1,10 @@
 import React from 'react';
 import { ActionFunctionArgs, LinksFunction, MetaFunction, json, redirect } from '@remix-run/node';
 
-import NewNote, {links as newNotesLinks} from '~/components/NewNote';
-import NoteList, {links as noteListLinks} from '~/components/NoteList';
+import NewNote from '~/components/NewNote';
+import NoteList from '~/components/NoteList';
 import { Note, getStoredNotes, storeNotes } from '~/data/notes';
 import { Link, isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
-
-export const links: LinksFunction = () => [...newNotesLinks(), ...noteListLinks()];
 
 export const meta: MetaFunction = () => {
     return [

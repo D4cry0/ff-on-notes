@@ -2,10 +2,6 @@ import React from 'react';
 import { LinksFunction } from '@remix-run/node';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 
-import newNoteStyles from './NewNote.css';
-
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: newNoteStyles }];
-
 interface NoteErrors {
     message: string;
 }

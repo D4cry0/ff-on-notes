@@ -2,8 +2,6 @@ import { Link } from '@remix-run/react';
 
 import { Note } from '~/data/notes';
 
-import styles from './NoteList.css';
-
 const NoteList = ({ notes }: { notes: Note[] }) => {
   return (
     <ul id="note-list">
@@ -38,7 +36,3 @@ const NoteList = ({ notes }: { notes: Note[] }) => {
 }
 
 export default NoteList;
-
-export const links = () => {
-  return [{ rel: 'stylesheet', href: styles }];
-}

@@ -1,14 +1,9 @@
 import React from 'react';
 import { Link, useLoaderData } from '@remix-run/react'
 
-import styles from '~/styles/note-details.css';
 import { Note, getStoredNotes } from '~/data/notes';
 import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/node';
 
-
-export function links() {
-    return [{ rel: 'stylesheet', href: styles },];
-}
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
     return [
