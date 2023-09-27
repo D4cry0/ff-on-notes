@@ -3,16 +3,16 @@ import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "FF On Notes" },
+    { name: "FF On Notes", content: "Simple notes app." },
   ];
 };
 
 export default function Index() {
   return (
     <main id='content'>
-      <h1>FOMO Notex</h1>
-      <p>Notas seguras</p>
+      <h1 className='text-3xl'>FF On Notes</h1>
+      <p>App Notes</p>
       <p id='cta'>
         <Link to="/notes">My notes</Link>
       </p>

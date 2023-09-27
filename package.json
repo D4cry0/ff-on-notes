@@ -6,7 +6,8 @@
   "version": "0.0.1",
   "author": {
     "name": "Arnulfo Cornejo",
-    "email": "supervisor@againstfomo.com"},
+    "email": "supervisor@againstfomo.com"
+  },
   "license": "LGPL-3.0-or-later",
   "scripts": {
     "build": "remix build",
@@ -29,6 +30,7 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "eslint": "^8.38.0",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   },
   "engines": {

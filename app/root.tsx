@@ -13,14 +13,11 @@ import {
 } from "@remix-run/react";
 
 import MainNavigation from "./components/MainNavigation";
-import stylesMain from "~/styles/main.css";
+import stylesheet from "~/tailwind.css";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-  {
-    rel: "stylesheet",
-    href: stylesMain
-  }
+  { rel: "stylesheet", href: stylesheet },
 ];
 
 export const ErrorBoundary = () => {
