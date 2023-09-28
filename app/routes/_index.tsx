@@ -11,7 +11,6 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <main id='content'>
-      <h1 className='text-3xl'>FF On Notes</h1>
       <p>App Notes</p>
       <p id='cta'>
         <Link to="/notes">My notes</Link>

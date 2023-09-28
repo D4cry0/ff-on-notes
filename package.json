@@ -16,13 +16,20 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.2",
     "@remix-run/css-bundle": "^2.0.0",
     "@remix-run/node": "^2.0.0",
     "@remix-run/react": "^2.0.0",
     "@remix-run/serve": "^2.0.0",
+    "i18next": "^23.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-fs-backend": "^2.2.0",
+    "i18next-http-backend": "^2.2.2",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.2.2",
+    "remix-i18next": "^5.4.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.0.0",

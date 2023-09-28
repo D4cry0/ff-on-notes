@@ -74,7 +74,7 @@ export const ErrorBoundary = () => {
                 <NewNote />
                 <div>
                     {/* <pre className='info-message'>{error.status}</pre> */}
-                    {/* <pre className='info-message'>{error.statusText}</pre> */}
+                    <pre className='info-message'>{error.statusText}</pre>
                     <pre className='info-message'>{error.status + ': ' + error.data.message}</pre>
                 </div>
             </>
@@ -82,12 +82,12 @@ export const ErrorBoundary = () => {
     }
   
     return (
-        <div className="error">
+        <div className='error'>
             <h1>App Error related to notes</h1>
             <pre>{
                 'Oops! Something went wrong.'
             }</pre>
-            <Link to="/">Return home</Link>
+            <Link to='/'>Return home</Link>
         </div>
     );
   
