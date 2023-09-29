@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from '@remix-run/react';
+import { NavLink, useLocation } from '@remix-run/react';
 
 import pkg from '@material-tailwind/react';
 const { Menu, MenuHandler, Button, Avatar, MenuList, MenuItem, Typography, Navbar, IconButton, Collapse } = pkg;
@@ -29,6 +29,7 @@ const profileMenuItems = [
 ];
  
 function ProfileMenu() {
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
  
   const closeMenu = () => setIsMenuOpen(false);
@@ -92,36 +93,42 @@ function ProfileMenu() {
 // nav list component
 const navListItems = [
   {
-    label: "Account",
-    icon: 'fa-solid fa-user',
+    label: "Notes",
+    icon: 'fa-solid fa-note-sticky',
+    url: '/notes',
   },
-  {
-    label: "Blocks",
-    icon: 'fa-solid fa-cube',
-  },
-  {
-    label: "Docs",
-    icon: 'fa-solid fa-cube',
-  },
+  // {
+  //   label: "Blocks",
+  //   icon: 'fa-solid fa-cube',
+  // },
+  // {
+  //   label: "Docs",
+  //   icon: 'fa-solid fa-cube',
+  // },
 ];
  
 function NavList() {
+
+  // TODO: Need to show notes count
+
   return (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      {navListItems.map(({ label, icon }, key) => (
-        <Typography
-          key={label}
-          as="a"
-          href="#"
-          variant="small"
-          color="blue-gray"
-          className="font-normal"
-        >
-          <MenuItem className="flex flex-row items-center gap-2 lg:rounded-full">
-            <i className={`${icon}`}></i>
-            <span>{label}</span>
-          </MenuItem>
-        </Typography>
+      {navListItems.map(({ label, icon, url }, key) => (
+        <NavLink to={url} key={label}>
+          <Typography
+            key={label}
+            as="a"
+            href="#"
+            variant="small"
+            color="blue-gray"
+            className="font-normal"
+          >
+            <MenuItem className="flex flex-row items-center gap-2 lg:rounded-full">
+              <i className={`${icon}`}></i>
+              <span>{label}</span>
+            </MenuItem>
+          </Typography>
+        </NavLink>
       ))}
     </ul>
   );

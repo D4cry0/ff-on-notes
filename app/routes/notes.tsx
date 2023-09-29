@@ -54,7 +54,7 @@ const NotesPage = () => {
     const notesList = useLoaderData<typeof loader>();
 
     return (
-        <main>
+        <main className='grid grid-cols-2 justify-center'>
             <NewNote />
             <NoteList notes={notesList} />
         </main>
