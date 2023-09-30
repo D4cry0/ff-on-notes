@@ -117,8 +117,6 @@ function NavList() {
         <NavLink to={url} key={label}>
           <Typography
             key={label}
-            as="a"
-            href="#"
             variant="small"
             color="blue-gray"
             className="font-normal"
