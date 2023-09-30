@@ -6,9 +6,10 @@ import NoteList from '~/components/NoteList';
 import { Note, getStoredNotes, storeNotes } from '~/data/notes';
 import { Link, isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
 import { ShowNoteFull } from '~/components/ShowNoteFull';
-import pkg from '@material-tailwind/react';
-const { Card, CardBody } = pkg;
 
+import pkg from '@material-tailwind/react';
+import { prisma } from '~/db.server';
+const { Card, CardBody } = pkg;
 
 export const meta: MetaFunction = () => {
     return [
@@ -26,7 +27,9 @@ export const meta: MetaFunction = () => {
 export const action = async ({request}: ActionFunctionArgs) => {
 
     const formData = await request.formData();
+    console.log(formData);
     const noteData = Object.fromEntries(formData);
+    console.log(noteData);
     // const noteData = {
     //     title: formData.get('title') as string,
     //     content: formData.get('content') as string
@@ -36,39 +39,47 @@ export const action = async ({request}: ActionFunctionArgs) => {
         return {message: 'Title must be at least 5 characters long'}
     }
 
+    if (noteData.content.toString().trim().length < 1) {
+        return {message: 'Content must be at least 1 character long'}
+    }
 
-    const existingNotes = await getStoredNotes();
-
-    noteData.id = new Date().toISOString();
-    const updatedNotes = existingNotes.concat(noteData);
-
-    await storeNotes(updatedNotes);
+    const notes = await prisma.note.upsert({
+        where: { title: noteData.title.toString() },
+        update: { content: noteData.content.toString(), updatedAt: new Date() },
+        create: { title: noteData.title.toString(), content: noteData.content.toString(), secret: false  }
+    });
 
     return redirect('/notes');
 }
 
 export const loader = async () => {
-    const notes = await getStoredNotes();
+    const notes = await prisma.note.findMany({
+        orderBy: { updatedAt: 'desc' },
+        where: { secret: false }
+    });
     // return json(notes);
-    return notes;
+    return JSON.stringify(notes);
 }
 
 
 const NotesPage = () => {
-    const notesList = useLoaderData<typeof loader>();
+    const notesList: Note[] = JSON.parse(useLoaderData<typeof loader>());
 
     const [openFullNote, setOpenFullNote] = useState(false);
     const [openNewNote, setOpenNewNote] = useState(false);
 
     const [ selectedNote, setSelectedNote ] = useState(0);
     
-    const handleOpenFullNote = (event: React.MouseEvent<any>) => {
-
+    const handleSelectNote = (event: React.MouseEvent<any>) => {
         if(event.currentTarget.getAttribute('id') === null) 
             setSelectedNote(0);
         else
             setSelectedNote(parseInt(event.currentTarget.getAttribute('id')));
+        
+        handleOpenFullNote();
+    }
 
+    const handleOpenFullNote = () => {
         setOpenFullNote(!openFullNote);
     }
 
@@ -90,9 +101,13 @@ const NotesPage = () => {
                         </article>
                     </CardBody>
                 </Card>
-                <NoteList notes={notesList} handleOpen={handleOpenFullNote}/>
+                <NoteList notes={notesList} handleSelect={handleSelectNote}/>
             </div>
-            <ShowNoteFull title={notesList[selectedNote].title} description={notesList[selectedNote].content} open={openFullNote} handleOpen={handleOpenFullNote} />
+            {
+                notesList && notesList.length !== 0 && (
+                    <ShowNoteFull title={notesList[selectedNote].title} description={notesList[selectedNote].content} open={openFullNote} handleOpen={handleOpenFullNote} />
+                )
+            }
             <NewNote open={openNewNote} handleOpen={handleOpenNewNote} />
         </main>
     )

@@ -11,13 +11,15 @@
   "license": "LGPL-3.0-or-later",
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev --manual",
-    "start": "remix-serve ./build/index.js",
+    "dev": "remix dev --manual -c \"node server.js\"",
+    "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.2",
+    "@prisma/client": "^5.3.1",
     "@remix-run/css-bundle": "^2.0.0",
+    "@remix-run/express": "^2.0.1",
     "@remix-run/node": "^2.0.0",
     "@remix-run/react": "^2.0.0",
     "@remix-run/serve": "^2.0.0",
@@ -26,6 +28,7 @@
     "i18next-fs-backend": "^2.2.0",
     "i18next-http-backend": "^2.2.2",
     "isbot": "^3.6.8",
+    "prisma": "^5.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.2.2",
