@@ -15,7 +15,7 @@ const login = () => {
                     </Typography>
                 </CardHeader>
                 <CardBody>
-                    <Form action='/login' method='post'></Form>
+                    <Form action='/login' method='post'>
                         <div>
                             <Input label='Username' id='username' name='username' type='text' crossOrigin={undefined} />
                         </div>
