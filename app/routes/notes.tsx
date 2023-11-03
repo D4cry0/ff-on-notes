@@ -3,7 +3,7 @@ import { ActionFunctionArgs, LinksFunction, MetaFunction, json, redirect } from 
 
 import NewNote from '~/components/NewNote';
 import NoteList from '~/components/NoteList';
-import { Note, getStoredNotes, storeNotes } from '~/data/notes';
+import { Note } from '~/interfaces/notes';
 import { Link, isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
 import { ShowNoteFull } from '~/components/ShowNoteFull';
 
